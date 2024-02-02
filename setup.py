@@ -15,11 +15,11 @@ import os
 os.path.dirname(os.path.abspath(__file__))
 
 setup(
-    name="diff_gaussian_rasterization",
-    packages=['diff_gaussian_rasterization'],
+    name="dreaminstancing_diff_gaussian_rasterization",
+    packages=['dreaminstancing_diff_gaussian_rasterization'],
     ext_modules=[
         CUDAExtension(
-            name="diff_gaussian_rasterization._C",
+            name="dreaminstancing_diff_gaussian_rasterization._C",
             sources=[
             "cuda_rasterizer/rasterizer_impl.cu",
             "cuda_rasterizer/forward.cu",
@@ -30,5 +30,11 @@ setup(
         ],
     cmdclass={
         'build_ext': BuildExtension
-    }
+    },
+    setup_requires=[
+          'torch',
+    ],
+    install_requires=[
+          'torch',
+    ],
 )
